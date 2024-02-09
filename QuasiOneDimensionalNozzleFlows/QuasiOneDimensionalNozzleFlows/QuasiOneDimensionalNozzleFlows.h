@@ -145,6 +145,9 @@ public:
 				p_bar[i] = rho_bar[i] * T_bar[i];
 			}
 			if (!supersonicOutflow) {
+				U1_bar[N] = 2 * U1_bar[N - 1] - U1_bar[N - 2];
+				U2_bar[N] = 2 * U2_bar[N - 1] - U2_bar[N - 2];
+				U3_bar[N] = pe * A(data.x[N]) / (gamma - 1) + gamma / 2 * pow(U2_bar[N], 2) / U1_bar[N];
 				p_bar[N] = pe;
 			}
 			for (int i = 0; i < N; i++) {
